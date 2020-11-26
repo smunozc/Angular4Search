@@ -1,0 +1,32 @@
+<div *ngIf="!loading; else notFound">
+    <div class="p-d-flex p-flex-wrap p-jc-around p-ai-end" *ngIf="!loading && !selection; else elseSelection">
+        <p-card *ngFor="let movie of movies; let i = index" header="{{ movie.Title }}"
+            subheader="{{ movie.Year }}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <p-header>
+                <img alt="Card" src="{{ movie.Poster }}">
+            </p-header>
+            <ng-template pTemplate="footer">
+                <a href="/movies/search/{{ movie.imdbID }}" style="text-decoration: none;">
+                    <p-button label="More"></p-button>
+                </a>
+            </ng-template>
+        </p-card>
+    </div>
+    <ng-template class="p-d-flex p-flex-wrap p-jc-around p-ai-end" #elseSelection>
+        <p-card *ngFor="let movie of movies; let i = index" header="{{ movie.Title }}" subheader="{{ movie.Year }}"
+            [style]="{width: '500px'}" styleClass="p-card-shadow">
+            <p-header>
+                <img alt="Card" src="{{ movie.Poster }}">
+            </p-header>
+            <p>Fecha salida: {{ movie.Released }}</p>
+            <p>Duración: {{ movie.Runtime }}</p>
+            <p>Género: {{ movie.Genre }}</p>
+            <p>Idiomas: {{ movie.Language }}</p>
+            <p>Plot: {{ movie.Plot }}</p>
+        </p-card>
+    </ng-template>
+
+</div>
+<ng-template #notFound>
+    <h2>Movie not found</h2>
+</ng-template>

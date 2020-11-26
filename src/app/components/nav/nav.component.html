@@ -1,0 +1,7 @@
+<p-menubar [model]="items">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText placeholder="Search" [(ngModel)]="value" />
+    <p-button><a href="/movies/search/{{ value }}" style="text-decoration: none; color: white;">Search</a></p-button>
+  </span>
+</p-menubar>
